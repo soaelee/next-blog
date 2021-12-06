@@ -1,17 +1,21 @@
+import Head from 'next/head';
 import Navbar from '../components/layout/Navbar'
 import '../styles/globals.css';
 
-const App = ({Component}) => {
-  return(
+const App = ({Component, pageProps}) => {
+  return (
     <>
-    <header>
-      <Navbar />
-    </header>
-    <main>
-      <Component />
-    </main>
+      <Head>
+        <link rel="icon" href="/icons/favicon.ico" />
+      </Head>
+      <header>
+        <Navbar />
+      </header>
+      <main>
+        <Component {...pageProps} />
+      </main>
     </>
-  )
+  );
 }
 
 export default App
