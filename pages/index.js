@@ -1,4 +1,5 @@
 import Head from 'next/head';
+import Link from 'next/link';
 
 const HomePage = () => {
   return (
@@ -9,9 +10,11 @@ const HomePage = () => {
       </Head>
       <h1> My Blog </h1>
       <ul>
-        <li>One</li>
-        <li>Two</li>
-        <li>Three</li>
+        <li>
+          <Link href="/posts/first-post">
+            <a>First Post</a>
+          </Link>
+        </li>
       </ul>
     </>
   );
