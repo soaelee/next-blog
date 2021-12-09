@@ -1,7 +1,8 @@
 import Head from 'next/head';
 import Link from 'next/link';
+import { getPosts } from "../lib/posts";
 
-const HomePage = () => {
+const HomePage = ({ posts }) => {
   return (
     <>
       <Head>
@@ -10,14 +11,23 @@ const HomePage = () => {
       </Head>
       <h1> My Blog </h1>
       <ul>
-        <li>
-          <Link href="/posts/first-post">
-            <a>First Post</a>
-          </Link>
-        </li>
+        {posts.map((post) => (
+          <li key={post.slug}>
+            <Link href={`/posts/${post.slug}`}>
+              <a>{post.title}</a>
+            </Link>
+          </li>
+        ))}
       </ul>
     </>
   );
+};
+
+export async function getStaticProps() {
+  const posts = await getPosts();
+  return {
+    props: { posts },
+  };
 }
 
 export default HomePage;
